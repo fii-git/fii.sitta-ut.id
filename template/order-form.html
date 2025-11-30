@@ -1,0 +1,60 @@
+<section class="form-section">
+  <h3 class="form-title">Tambah Bahan Ajar Baru</h3>
+
+  <div class="form-grid">
+
+    <div class="form-group">
+      <label>Kode:</label>
+      <input type="text" v-model="form.kode" placeholder="Kode bahan ajar">
+    </div>
+
+    <div class="form-group">
+      <label>Judul:</label>
+      <input type="text" v-model="form.judul" placeholder="Judul bahan ajar">
+    </div>
+
+    <div class="form-group">
+      <label>Kategori:</label>
+      <select v-model="form.kategori">
+        <option value="">Pilih Kategori</option>
+        <option>SI</option>
+        <option>TI</option>
+        <option>MIPA</option>
+        <option>Ekonomi</option>
+        <option>Umum</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>UPBJJ:</label>
+      <select v-model="form.upbjj">
+        <option value="">Pilih UPBJJ</option>
+        <option>Jakarta</option>
+        <option>Bandung</option>
+        <option>Surabaya</option>
+        <option>Medan</option>
+        <option>Makassar</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Rak:</label>
+      <input type="text" v-model="form.lokasiRak">
+    </div>
+
+    <div class="form-group">
+      <label>Qty:</label>
+      <input type="number" v-model.number="form.qty">
+    </div>
+
+    <div class="form-group">
+      <label>Safety Stock:</label>
+      <input type="number" v-model.number="form.safety">
+    </div>
+
+    <div class="form-group button-container">
+      <button class="btn-tambah" @click="submitForm">+ Tambah</button>
+    </div>
+
+  </div>
+</section>

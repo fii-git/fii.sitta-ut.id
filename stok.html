@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SITTA – Monitoring Stok</title>
+
+  <!-- Vue 3 -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+  <!-- CSS Tugas 2 -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <!-- SIDEBAR (Tugas 2) -->
+  <aside class="sidebar">
+    <div class="logo-row">
+      <img src="assets/Logo_Universitas_Terbuka.png" alt="Logo UT">
+      <div class="logo-text">SITTA - UT</div>
+    </div>
+
+    <a href="dashboard.html">Dashboard</a>
+    <a href="stok.html" class="active">Monitoring Stok</a>
+    <a href="tracking.html">Tracking DO</a>
+
+    <div class="menu-group">
+      <button class="menu-toggle" onclick="toggleSubmenu()">Laporan ▾</button>
+      <div class="submenu" id="submenuLaporan">
+        <a href="monitoring.html" class="submenu-item">Monitoring Progres DO</a>
+        <a href="rekap.html" class="submenu-item">Rekap Bahan Ajar</a>
+      </div>
+    </div>
+
+    <a href="histori.html">Histori Transaksi</a>
+
+    <div class="sidebar-footer">
+      <small>Universitas Terbuka</small>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="content">
+    <h1>Monitoring Stok Bahan Ajar</h1>
+
+    <!-- ROOT VUE APP -->
+    <div id="app">
+
+      <!-- Form Tambah Bahan -->
+      <order-form @add-item="addBahanAjar"></order-form>
+
+      <!-- Tabel Stok (DATA dari JSON) -->
+      <stock-table :items="bahanAjar" @edit-item="openEditModal"></stock-table>
+
+      <!-- Modal Edit -->
+      <app-modal ref="modal" @save="saveEdit"></app-modal>
+    </div>
+  </main>
+
+  <!-- ======== LOAD TEMPLATES (versi tugas 3) ======== -->
+  <!-- Semua template berada di folder /template -->
+  <script src="template/order-form.html" type="text/html"></script>
+  <script src="template/stock-table.html" type="text/html"></script>
+  <script src="template/status-badge.html" type="text/html"></script>
+  <script src="template/app-modal.html" type="text/html"></script>
+
+  <!-- ======== SERVICES ======== -->
+  <script src="js/service/api.js"></script>
+
+  <!-- ======== COMPONENTS ======== -->
+  <script src="js/components/order-form.js" type="module"></script>
+  <script src="js/components/stock-table.js" type="module"></script>
+  <script src="js/components/status-badge.js" type="module"></script>
+  <script src="js/components/app-modal.js" type="module"></script>
+
+  <!-- ======== ROOT APP ======== -->
+  <script src="js/app.js" type="module"></script>
+
+  <script>
+    function toggleSubmenu() {
+      document.getElementById("submenuLaporan").classList.toggle("show");
+    }
+  </script>
+
+</body>
+</html>

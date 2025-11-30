@@ -1,0 +1,990 @@
+
+/* ================================
+   GLOBAL RESET
+================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #f0f3f9;
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ================================
+   SIDEBAR UT (LOGO + SITTA-UT)
+================================= */
+/* ============ SIDEBAR ============ */
+.sidebar {
+  width: 240px !important;
+  background: linear-gradient(135deg, #f5ffa8, #9abbdb);
+  color: #000;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+.logo-row {
+  display: flex;
+  align-items: center;
+  gap: 16px; 
+  padding: 12px 16px; 
+  margin-bottom: 20px; 
+  border-bottom: 2px solid #007BFF; 
+}
+
+.logo-row img {
+  width: 60px;
+  height: auto;
+}
+
+.logo-text {
+  font-size: 20px;
+  font-weight: bold;
+  color: #003366; /* biru tua khas UT */
+  line-height: 1.6;
+}
+
+
+
+/* Menu */
+.nav-menu, .nav {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-menu a,
+.nav a,
+.sidebar a {
+  color: black;
+  text-decoration: none;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  border-radius: 6px;
+  transition: 0.2s;
+}
+
+.nav a:hover,
+.nav-menu a:hover,
+.sidebar a:hover {
+  background: yellow;
+}
+
+.nav a.active,
+.nav-menu a.active {
+  background: #003b7a;
+}
+
+/* ================================
+   MAIN CONTENT
+================================= */
+/* ============ MAIN CONTENT ============ */
+.main-content, .main, .content {
+  margin-left: 240px !important;
+  width: calc(100% - 240px) !important;
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+
+h1, h2, h3 {
+  color: #003b7a;
+  margin-bottom: 15px;
+}
+
+/* ================================
+   CARD STYLE
+================================= */
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+  margin-bottom: 15px;
+}
+
+/* ================================
+   FORM + INPUT
+================================= */
+input, select {
+  padding: 8px 10px;
+  margin: 4px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-right: 8px;
+}
+
+button {
+  padding: 8px 14px;
+  background: #004a9f;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #0063d4;
+}
+
+/* ================================
+   TABLE STYLE 
+================================= */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  background: #fff;
+  font-size: 14px;
+}
+
+thead {
+  background-color: #0056a6; /* biru khas UT */
+  color: #fff;
+  text-align: left;
+}
+
+thead th {
+  padding: 12px 16px;
+  font-weight: 600;
+}
+
+tbody tr {
+  border-bottom: 1px solid #e6e6e6;
+  transition: background 0.2s;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+  background-color: #eaf3ff;
+}
+
+tbody td {
+  padding: 10px 16px;
+  vertical-align: middle;
+}
+
+/* Kolom Status */
+.status-dibuat {
+  color: #0056a6;
+  font-weight: 600;
+}
+
+.status-dikirim {
+  color: #f39c12;
+  font-weight: 600;
+}
+
+.status-diterima {
+  color: #27ae60;
+  font-weight: 600;
+}
+
+/* Tombol Aksi */
+button {
+  border: none;
+  border-radius: 6px;
+  background-color: #0056a6;
+  color: white;
+  cursor: pointer;
+  padding: 6px 10px;
+  transition: background 0.2s;
+}
+
+button:hover {
+  background-color: #0073e6;
+}
+
+/* Tombol Detail lebih kecil */
+.btn-detail {
+  padding: 5px 10px;
+  font-size: 13px;
+}
+
+/* Pencarian input */
+input[type="text"],
+input[type="search"] {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 8px 10px;
+  width: 100%;
+  font-size: 14px;
+}
+
+input:focus {
+  border-color: #0056a6;
+  outline: none;
+  box-shadow: 0 0 3px #0056a6;
+}
+
+/* Input Qty dalam tabel */
+table td input[type="number"] {
+  width: 70px;
+  padding: 5px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Kolom aksi */
+table td .btn-hapus {
+  background: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: background 0.2s;
+}
+
+table td .btn-hapus:hover {
+  background: #b02a37;
+}
+
+/* Badge status stok */
+.badge {
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.badge-kosong {
+  background: #d20c0c;
+  color: white;
+}
+
+.badge-menipis {
+  background: #ffd34f;
+  color: #000;
+}
+
+.badge-aman {
+  background: #27c24c;
+  color: white;
+}
+
+/* Responsif (biar tabel tidak pecah di layar kecil) */
+@media (max-width: 768px) {
+  table {
+    font-size: 12px;
+  }
+  table td input[type="number"] {
+    width: 50px;
+  }
+  table td .btn-hapus {
+    padding: 4px 6px;
+    font-size: 12px;
+  }
+}
+
+
+/* ===== SUBMENU LAPORAN ===== */
+
+.menu-group {
+  margin-top: 10px; 
+  margin-bottom: 15px; 
+
+}
+
+.menu-toggle {
+  width: 100%;
+  background: none;
+  color: black;
+  border: none;
+  padding: 10px 12px;
+  text-align: left;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.menu-toggle:hover {
+  background: yellow;
+}
+
+/* Submenu container */
+.submenu {
+  display: none;
+  flex-direction: column;
+  margin-top: 6px;
+  margin-left: 10px;
+  border-left: 2px solid rgba(255,255,255,0.4);
+  padding-left: 8px;
+}
+
+/* Items di dalam submenu */
+.submenu-item {
+  color: #e8e8e8;
+  padding: 2px 6px;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.submenu-item:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+/* ketika submenu aktif */
+.submenu.show {
+  display: flex;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: none;
+  border-radius: 10px;
+  margin-bottom: 15px;  
+  padding: 10px,20px;    
+}
+
+.topbar-right button {
+  padding: 8px 14px;
+  border-radius: 6px;
+  background: #004a9f;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.topbar-right button:hover {
+  background: #0066d8;
+}
+
+/* ========== KOTAK INFO STOK ========== */
+#stokSummary {
+  background: #fff;
+  padding: 15px 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin-top: 10px;
+  transition: all 0.3s ease;
+}
+
+#stokSummary h3 {
+  margin-bottom: 5px;
+  font-size: 1.1rem;
+  color: #1a237e;
+  border-bottom: 2px solid #ffcc00;
+  padding-bottom: 4px;
+  display: inline-block;
+}
+
+/* Progress bar container */
+.progress-container {
+  display: flex;
+  height: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  background: #eee;
+}
+
+/* Bar warna (otomatis diisi dari JS) */
+.progress-bar {
+  height: 100%;
+  transition: width 1.5s ease-in-out;
+}
+
+.progress-safe { background: #4CAF50; }  /* hijau aman */
+.progress-low  { background: #FFC107; }  /* kuning menipis */
+.progress-out  { background: #F44336; }  /* merah kosong */
+
+
+/* ================================
+   TAMBAH BAHAN AJAR BARU
+================================ */
+.form-section {
+  background: #f8faff;
+  padding: 25px 30px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  margin-bottom: 25px;
+}
+
+.form-title {
+  color: #004aad;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #007BFF;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+/* Grid layout untuk form */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 18px 25px;
+  align-items: end;
+}
+
+.form-group label {
+  font-weight: 600;
+  font-size: 14px;
+  color: #333;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 8px 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  transition: border-color 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #171818;
+  outline: none;
+}
+
+/* Tombol Tambah */
+.btn-tambah {
+  background-color: #0056b3;
+  color: #fff;
+  border: none;
+  padding: 9px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  width: 100%;
+}
+
+.btn-tambah:hover {
+  background-color: #004092;
+}
+
+/* Tombol di kanan bawah form */
+.button-container {
+  align-self: end;
+}
+
+/* ================================
+   CARD PENGIRIMAN TERAKHIR 
+================================= */
+.pengiriman-item {
+  background: #f9fafc;
+  border: 1px solid #e4e7eb;
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin-bottom: 10px;
+  transition: background 0.2s ease;
+}
+
+.pengiriman-item:hover {
+  background: #eef3ff;
+}
+
+.pengiriman-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  color: #004a9f;
+  margin-bottom: 6px;
+}
+
+.pengiriman-footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.pengiriman-footer .tanggal {
+  font-size: 13px;
+  color: #666;
+}
+
+.do-number {
+  font-weight: bold;
+}
+
+/* Label status */
+.status-label {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #003366;
+  background-color: #e7f0ff; 
+  border: 1px solid #c9d9ff;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+/* Warna per status */
+.status-dibuat {
+  background-color: #f7f7f7;  
+  border-color: #d6d6d6;
+  color: #333;
+}
+
+.status-dikirim {
+  background-color: #e6f0ff;   
+  border-color: #b5cfff;
+  color: #004a9f;              
+}
+
+.status-diterima {
+  background-color: #e9f9ec;   
+  border-color: #bce3c7;
+  color: #2e7d32;            
+}
+/* ================================
+   MODAL DETAIL DELIVERY ORDER
+================================= */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease;
+}
+
+.modal-box {
+  background: #fff;
+  padding: 20px 25px;
+  border-radius: 12px;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  animation: slideUp 0.25s ease;
+}
+
+.modal-box h3 {
+  color: #005BBB;
+  margin-bottom: 10px;
+}
+
+.modal-box h4 {
+  margin-top: 15px;
+  color: #007BFF;
+  font-size: 16px;
+}
+
+.modal-box ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin-top: 6px;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.modal-box li {
+  margin-bottom: 4px;
+  color: #333;
+}
+
+.btn-tutup {
+  margin-top: 15px;
+  background: #005BBB;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-tutup:hover {
+  background: #004799;
+}
+
+/* Animasi halus saat modal muncul */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+/* ================================
+   TOMBOL AKSI DI TABEL (DETAIL & STATUS)
+================================= */
+.table-actions {
+  display: flex;
+  justify-content: center;
+  gap: 6px; /* jarak antar tombol */
+}
+
+.table-actions button {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background-color: #0056a6;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.table-actions button:hover {
+  background-color: #0073e6;
+  transform: translateY(-1px);
+}
+
+.table-actions button i {
+  font-size: 14px;
+}
+
+/* Warna spesifik */
+.btn-detail {
+  background-color: #007bff;
+}
+.btn-detail:hover {
+  background-color: #339cff;
+}
+
+.btn-status {
+  background-color: #17a2b8;
+}
+.btn-status:hover {
+  background-color: #2bc3d8;
+}
+
+.table-container {
+  background: #fff;
+  border-radius: 12px;
+  padding: 15px 20px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+  overflow-x: auto; /* agar tabel tidak keluar container */
+  margin-top: 15px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead th {
+  background-color: #004a9f;
+  color: white;
+  font-weight: 600;
+  padding: 12px 14px;
+  text-align: center;
+}
+
+tbody td {
+  padding: 10px 14px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* Kolom aksi (biar rapi & di tengah) */
+.table-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.table-actions button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  font-size: 13px;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Tombol khusus */
+.table-actions .btn-detail {
+  background-color: #007bff;
+}
+
+.table-actions .btn-detail:hover {
+  background-color: #339cff;
+}
+
+.table-actions .btn-status {
+  background-color: #17a2b8;
+}
+
+.table-actions .btn-status:hover {
+  background-color: #2bc3d8;
+}
+
+.table-actions button i {
+  font-size: 14px;
+}
+
+/* Scroll horizontal di layar kecil */
+@media (max-width: 768px) {
+  .table-container {
+    padding: 10px;
+  }
+  table {
+    font-size: 13px;
+  }
+  .table-actions {
+    flex-direction: column;
+    gap: 4px;
+  }
+}
+
+/* ====== TOMBOL EDIT ====== */
+.btn-edit {
+  background: #004a9f;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  margin-right: 4px;
+}
+.btn-edit:hover {
+  background: #007bff;
+}
+
+.aksi-kolom {
+  display: flex;
+  gap: 6px;
+}
+
+/* ====== MODAL EDIT ====== */
+/* ========== MODAL OVERLAY ========== */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px; /* Biar modal tidak mepet layar */
+  z-index: 2000;
+}
+
+/* ========== MODAL BOX (lebih rapi & elegan) ========== */
+.modal-box {
+  background: #ffffff;
+  width: 420px;
+  max-width: 90%;
+
+  /* Tinggi maksimal, agar scroll tidak keluar */
+  max-height: 80vh;
+  overflow-y: auto;
+
+  /* Sudut rapi */
+  border-radius: 18px !important;
+
+  /* Spacing */
+  padding: 24px 28px;
+
+  /* Shadow elegan */
+  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+
+  /* Animasi halus */
+  animation: fadeIn 0.25s ease;
+}
+
+/* Scrollbar elegan tipis agar tidak keluar modal */
+.modal-box::-webkit-scrollbar {
+  width: 4px;            /* Lebih kecil */
+}
+
+.modal-box::-webkit-scrollbar-thumb {
+  background: #b5b5b5;    /* Warna abu soft */
+  border-radius: 20px;    /* Membulatkan scroll */
+}
+
+.modal-box::-webkit-scrollbar-thumb:hover {
+  background: #999;       /* Warna saat hover */
+}
+
+.modal-box::-webkit-scrollbar-track {
+  background: transparent;
+  margin: 10px;           /* Jarak agar scrollbar tidak menempel ke ujung modal */
+}
+
+.btn-simpan {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-right: 6px;
+}
+
+.btn-simpan:hover {
+  background: #339bff;
+}
+
+/* =========================================
+   FIX TABEL — AGAR RAPI, KONSISTEN & SEJAJAR
+========================================= */
+
+/* --- Tabel Utama --- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  font-size: 14px;
+}
+
+/* --- Header --- */
+thead th {
+  background: #004a9f;
+  color: white;
+  padding: 12px 14px;
+  text-align: center !important;
+  font-weight: 600;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+/* --- Isi tabel --- */
+tbody td {
+  padding: 10px 14px;
+  text-align: center !important;
+  vertical-align: middle !important;
+  white-space: nowrap; /* Supaya tidak turun */
+}
+
+/* --- Hover --- */
+tbody tr:hover {
+  background: #eef3ff;
+}
+
+/* --- Kolom Aksi --- */
+.aksi-kolom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Tombol Edit */
+.btn-edit {
+  background: #0056a6;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-edit:hover {
+  background: #007bff;
+}
+
+/* Tombol Hapus */
+.btn-hapus {
+  background: #dc3545;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-hapus:hover {
+  background: #b02a37;
+}
+
+/* --- Badge Status --- */
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.badge-menipis {
+  background: #ffd34f;
+  color: #000;
+}
+
+.badge-kosong {
+  background: #d20c0c;
+  color: white;
+}
+
+.badge-aman {
+  background: #27c24c;
+  color: white;
+}
+
+/* Supaya tabel tidak pecah di layar kecil */
+.table-container {
+  overflow-x: auto;
+  width: 100%;
+  padding: 12px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+td, th {
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;          /* Jarak antar tombol */
+  margin-top: 20px;   /* Jarak dari input ke tombol */
+}
+
+.modal-actions button {
+  padding: 8px 18px;
+  border-radius: 6px;
+}

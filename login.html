@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="css/login.css" />
+</head>
+<body class="page-center">
+  <main class="card login-card">
+    <div class="brand">
+      <img src="assets/Logo_Universitas_Terbuka.png" alt="Logo UT" class="logo" />
+      <h1>SITTA - UT</h1>
+    </div>
+      <form id="loginForm" class="form">
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" placeholder="nama@ut.ac.id" required />
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password" placeholder="Masukkan password" required />
+
+      <button type="submit" class="btn primary">Login</button>
+
+      <div class="row-between small">
+        <button type="button" id="forgotBtn" class="link-btn">Lupa Password?</button>
+        <button type="button" id="registerBtn" class="link-btn">Daftar</button>
+      </div>
+  </main>
+
+  <!-- Modals -->
+  <div class="modal" id="modalForgot" aria-hidden="true">
+    <div class="modal-content">
+      <h3>Lupa Password</h3>
+      <p>Masukkan email untuk menerima petunjuk reset password (simulasi).</p>
+      <input id="forgotEmail" type="email" placeholder="nama@ut.ac.id" />
+      <div class="modal-actions">
+        <button id="sendReset" class="btn primary">Kirim</button>
+        <button class="btn" data-close>Close</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="modalRegister" aria-hidden="true">
+    <div class="modal-content">
+      <h3>Daftar Akun (Simulasi)</h3>
+      <p>Form pendaftaran sederhana (tidak disimpan). Hanya demo.</p>
+      <input id="regName" type="text" placeholder="Nama lengkap" />
+      <input id="regEmail" type="email" placeholder="Email UT" />
+      <input id="regPassword" type="password" placeholder="Password" />
+      <div class="modal-actions">
+        <button id="doRegister" class="btn primary">Daftar</button>
+        <button class="btn" data-close>Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

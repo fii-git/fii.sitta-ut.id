@@ -1,0 +1,10 @@
+<span 
+  class="badge"
+  :class="{
+    'badge-kosong': status === 'Kosong',
+    'badge-menipis': status === 'Menipis',
+    'badge-aman': status === 'Aman'
+  }"
+>
+  {{ status }}
+</span>

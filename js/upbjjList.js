@@ -1,0 +1,1 @@
+const upbjjList = ["Jakarta", "Bandung", "Surabaya", "Medan", "Makassar"];

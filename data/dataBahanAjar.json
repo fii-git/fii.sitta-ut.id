@@ -1,0 +1,146 @@
+{
+  "bahanAjar": [ 
+  {
+    "kode": "BA001",
+    "judul": "Pengantar Teknologi Informasi",
+    "kategori": "TI",
+    "upbjj": "Jakarta",
+    "lokasiRak": "A1",
+    "qty": 12,
+    "safety": 5,
+    "harga": 75000,
+    "catatanHTML": "<i>Tersedia</i>"
+  },
+  {
+    "kode": "BA002",
+    "judul": "Matematika Dasar",
+    "kategori": "MIPA",
+    "upbjj": "Bandung",
+    "lokasiRak": "B3",
+    "qty": 4,
+    "safety": 5,
+    "harga": 55000,
+    "catatanHTML": "<b>Reorder disarankan</b>"
+  },
+  {
+    "kode": "BA003",
+    "judul": "Bahasa Indonesia",
+    "kategori": "Umum",
+    "upbjj": "Surabaya",
+    "lokasiRak": "C2",
+    "qty": 0,
+    "safety": 3,
+    "harga": 65000,
+    "catatanHTML": "<span style=\"color:red\">Kosong</span>"
+  },
+  {
+    "kode": "BA004",
+    "judul": "Algoritma dan Pemograman",
+    "kategori": "SI",
+    "upbjj": "Jakarta",
+    "lokasiRak": "B3",
+    "qty": 9,
+    "safety": 10,
+    "harga": 48000,
+    "catatanHTML": "<b>Reorder disarankan</b>"
+  },
+  {
+    "kode": "BA005",
+    "judul": "Proses Bisnis",
+    "kategori": "SI",
+    "upbjj": "Jakarta",
+    "lokasiRak": "A2",
+    "qty": 120,
+    "safety": 5,
+    "harga": 80000,
+    "catatanHTML": "<i>Tersedia</i>"
+  },
+  {
+    "kode": "BA006",
+    "judul": "Basis Data",
+    "kategori": "SI",
+    "upbjj": "Surabaya",
+    "lokasiRak": "A3",
+    "qty": 50,
+    "safety": 5,
+    "harga": 55000,
+    "catatanHTML": "<i>Tersedia</i>"
+  },
+  {
+    "kode": "BA007",
+    "judul": "Pancasila",
+    "kategori": "Umum",
+    "upbjj": "Medan",
+    "lokasiRak": "D1",
+    "qty": 38,
+    "safety": 5,
+    "harga": 68000,
+    "catatanHTML": "<i>Tersedia</i>"
+  } ],
+
+  "upbjjList": ["Jakarta", "Bandung", "Surabaya", "Medan", "Makassar"],
+
+  "paketList": [
+  { "kode": "PKT01", "nama": "Paket Semester 1", "harga": 150000, "isi": ["Teknologi Informasi", "Matematika Dasar"] },
+  { "kode": "PKT02", "nama": "Paket Semester 2", "harga": 180000, "isi": ["Basis Data", "Pemrograman Web"] }
+  ],
+
+  "doList": [
+  {
+    "no": "DO-20251101-002",
+    "nim": "1234567890",
+    "nama": "Budi Santoso",
+    "paket": "PKT01",
+    "upbjj": "Jakarta",
+    "ekspedisi": "JNE Reguler",
+    "total": 150000,
+    "tanggal": "2025-11-01",
+    "status": "Dibuat",
+    "tracking": [
+      { "tanggal": "2025-11-01", "lokasi": "Jakarta", "status": "Paket sedang disiapkan" },
+      { "tanggal": "2025-11-01", "lokasi": "Jakarta", "status": "Pengiriman sedang diproses" }
+    ]
+  },
+  {
+    "no": "DO-20251101-001",
+    "nim": "9876543210",
+    "nama": "Siti Aminah",
+    "paket": "PKT02",
+    "upbjj": "Bandung",
+    "ekspedisi": "TIKI",
+    "total": 180000,
+    "tanggal": "2025-11-01",
+    "status": "Dikirim",
+    "tracking": [
+      { "tanggal": "2025-11-01", "lokasi": "Jakarta", "status": "Paket sedang disiapkan" },
+      { "tanggal": "2025-11-01", "lokasi": "Jakarta", "status": "Pengiriman sedang diproses" },
+      { "tanggal": "2025-11-01", "lokasi": "Jakarta", "status": "Telah dikirim dari gudang terkait" },
+      { "tanggal": "2025-11-02", "lokasi": "Bandung", "status": "Paket telah sampai ditransit gudang" },
+      { "tanggal": "2025-11-02", "lokasi": "Bandung", "status": "Paket sedang disortir" }
+    ]
+  },
+  {
+    "no": "DO-20251103-001",
+    "nim": "2468101214",
+    "nama": "Ahmad Rizki",
+    "paket": "PKT02",
+    "upbjj": "Surabaya",
+    "ekspedisi": "J&T",
+    "total": 180000,
+    "tanggal": "2025-11-03",
+    "status": "Diterima",
+    "tracking": [
+      { "tanggal": "2025-11-03", "lokasi": "Jakarta", "status": "Paket sedang disiapkan" },
+      { "tanggal": "2025-11-03", "lokasi": "Jakarta", "status": "Pengiriman sedang diproses" },
+      { "tanggal": "2025-11-03", "lokasi": "Jakarta", "status": "Telah dikirim dari gudang terkait" },
+      { "tanggal": "2025-11-04", "lokasi": "Bandung", "status": "Paket telah sampai ditransit gudang" },
+      { "tanggal": "2025-11-04", "lokasi": "Bandung", "status": "Paket sedang disortir" },
+      { "tanggal": "2025-11-04", "lokasi": "Bandung", "status": "Paket sedang dikirim ke gudang surabaya" },
+      { "tanggal": "2025-11-05", "lokasi": "Surabaya", "status": "Paket telah sampai digudang terkait" },
+      { "tanggal": "2025-11-05", "lokasi": "Surabaya", "status": "Paket menuju alamat penerima" },
+      { "tanggal": "2025-11-05", "lokasi": "Surabaya", "status": "Paket telah diterima" }
+      ]
+   } 
+  ]
+  }
+  

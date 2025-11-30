@@ -1,0 +1,76 @@
+<div class="card">
+  <h2>Daftar Bahan Ajar</h2>
+
+  <div class="filters">
+
+    <label>UPBJJ:</label>
+    <select v-model="filterUpbjj">
+      <option value="">Semua</option>
+      <option v-for="u in uniqueUpbjj" :key="u">{{ u }}</option>
+    </select>
+
+    <label>Kategori:</label>
+    <select v-model="filterKategori">
+      <option value="">Semua</option>
+      <option v-for="k in uniqueKategori" :key="k">{{ k }}</option>
+    </select>
+
+    <label>
+      <input type="checkbox" v-model="filterKritis">
+      Stok Kritis
+    </label>
+
+    <label>Sortir:</label>
+    <select v-model="sortBy">
+      <option value="judul">Judul</option>
+      <option value="qty">Qty</option>
+      <option value="harga">Harga</option>
+    </select>
+
+    <button @click="resetFilter">Reset</button>
+  </div>
+  
+  <div class="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Kode</th>
+        <th>Judul</th>
+        <th>Kategori</th>
+        <th>UPBJJ</th>
+        <th>Rak</th>
+        <th>Harga</th>
+        <th>Qty</th>
+        <th>Safety</th>
+        <th>Status</th>
+        <th>Catatan</th>
+        <th>Aksi</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr v-for="b in filteredData" :key="b.kode">
+        <td>{{ b.kode }}</td>
+        <td>{{ b.judul }}</td>
+        <td>{{ b.kategori }}</td>
+        <td>{{ b.upbjj }}</td>
+        <td>{{ b.lokasiRak }}</td>
+        <td>{{ formatHarga(b.harga) }}</td>
+        <td>{{ b.qty }}</td>
+        <td>{{ b.safety }}</td>
+
+        <td>
+          <status-badge :status="getStatus(b)"></status-badge>
+        </td>
+
+        <td>{{ getCatatan(b) }}</td>
+
+        <td class="aksi-kolom">
+          <button class="btn-edit" @click="editItem(b)">Edit</button>
+          <button class="btn-hapus" @click="hapusItem(b.kode)">Hapus</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</div>

@@ -1,0 +1,173 @@
+/* =======================================
+   GLOBAL LOGIN PAGE
+======================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #f5ffa8, #9abbdb);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* =======================================
+   LOGIN CARD
+======================================= */
+.login-card {
+  width: 370px;
+  background: white;
+  padding: 28px;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  animation: fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* =======================================
+   LOGO + BRAND SITTA UT
+======================================= */
+.brand {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.brand img {
+  width: 110px;
+  margin-bottom: 10px;
+}
+
+.brand h1 {
+  font-size: 22px;
+  font-weight: bold;
+  color: #003b7a;
+}
+
+/* =======================================
+   FORM STYLE
+======================================= */
+.form label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #003b7a;
+  display: block;
+  margin-top: 12px;
+}
+
+.form input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #cccccc;
+  border-radius: 8px;
+  margin-top: 5px;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.form input:focus {
+  border-color: #1976d2;
+  outline: none;
+  box-shadow: 0 0 5px rgba(25,118,210,0.4);
+}
+
+/* =======================================
+   BUTTONS
+======================================= */
+.btn {
+  margin-top: 18px;
+  width: 100%;
+  padding: 11px;
+  font-size: 15px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn.primary {
+  background: #004a9f;
+  color: white;
+}
+
+.btn.primary:hover {
+  background: #0063d4;
+}
+
+/* =======================================
+   LINK BUTTONS (Lupa Password, Daftar)
+======================================= */
+.row-between {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 14px;
+}
+
+.link-btn {
+  background: none;
+  border: none;
+  color: #004a9f;
+  font-size: 13px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* =======================================
+   MODAL
+======================================= */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal[aria-hidden="false"] {
+  display: flex;
+}
+
+.modal-content {
+  background: white;
+  padding: 25px;        /* tambah jarak lebih luas */
+  border-radius: 12px;
+  width: 320px;         /* sedikit lebih lebar */
+}
+
+.modal-content h3 {
+  margin-bottom: 12px;  /* jarak judul */
+  color: #003b7a;
+}
+
+.modal-content p {
+  margin-bottom: 14px;  /* jarak setelah teks */
+  font-size: 14px;
+  color: #333;
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 18px;   /* jarak yang diperbesar */
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;     /* jarak tombol dengan input */
+}
+
+.modal-actions .btn {
+  width: 48%;
+}

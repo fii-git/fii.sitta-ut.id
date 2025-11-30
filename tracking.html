@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Tracking Delivery Order</title>
+  <script src="https://unpkg.com/vue@3"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="logo-row">
+      <img src="assets/Logo_Universitas_Terbuka.png" alt="Logo UT">
+      <div class="logo-text">SITTA - UT</div>
+    </div>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="stok.html">Monitoring Stok</a>
+    <a href="tracking.html" class="nav-item active">Tracking DO</a>
+
+    <div class="menu-group">
+      <button class="menu-toggle" onclick="toggleSubmenu()">Laporan ▾</button>
+      <div class="submenu" id="submenuLaporan">
+        <a href="monitoring.html" class="submenu-item">Monitoring Progres DO</a>
+        <a href="rekap.html" class="submenu-item">Rekap Bahan Ajar</a>
+      </div>
+    </div>
+
+    <a href="histori.html">Histori Transaksi</a>
+
+    <div class="sidebar-footer">
+      <small>Universitas Terbuka</small>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="content" id="trackingApp">
+    <do-tracking data-json-path="data/dataBahanAjar.json"></do-tracking>
+  </main>
+
+  <script type="module" src="js/tracking-app.js"></script>
+
+  <script>
+    function toggleSubmenu() {
+      document.getElementById("submenuLaporan").classList.toggle("show");
+    }
+  </script>
+</body>
+</html>

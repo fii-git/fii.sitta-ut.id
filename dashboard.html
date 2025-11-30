@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dashboard - SITTA UT</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="app-layout">
+
+  <aside class="sidebar">
+   <div class="sidebar">
+  <div class="logo-row">
+    <img src="assets/Logo_Universitas_Terbuka.png">
+    <div class="logo-text">SITTA - UT</div>
+  </div>
+
+  <a href="dashboard.html" class="nav-link">Dashboard</a>
+  <a href="stok.html" class="nav-link">Monitoring Stok</a>
+  <a href="tracking.html" class="nav-link">Tracking DO</a>
+
+  <!--MENU LAPORAN PAKAI SUBMENU -->
+  <div class="menu-group">
+    <button class="menu-toggle">
+      Laporan ▾
+    </button>
+
+    <div class="submenu">
+      <a href="monitoring.html" class="submenu-item">Monitoring Progres DO Bahan Ajar</a>
+      <a href="rekap.html" class="submenu-item">Rekap Bahan Ajar</a>
+    </div>
+    </div>
+      <a href="#" class="nav-item">Histori Transaksi</a>
+    </nav>
+    <div class="sidebar-footer">
+      <small>Universitas Terbuka</small>
+    </div>
+  </aside>
+
+
+  <main class="main">
+    <header class="topbar">
+      <div id="greeting">Halo, selamat datang!</div>
+      <div class="topbar-right">
+        <button id="logoutBtn" class="btn outline">Logout</button>
+      </div>
+    </header>
+
+    <section class="container">
+      <div class="grid-3">
+        <div class="card">
+          <h3>Info Stok Singkat</h3>
+          <p id="stokSummary">Memuat...</p>
+        </div>
+        <div class="card">
+          <h3>Pengiriman Terakhir</h3>
+          <div id="pengirimanTerakhir">Memuat data...</div>
+        </div>
+        <div class="card">
+          <h3>Notifikasi</h3>
+          <p>Tidak ada notifikasi penting.</p>
+        </div>
+      </div>
+
+      <div class="card mt-16">
+        <h3>Ringkasan Aktivitas</h3>
+        <p>Ini adalah tampilan contoh dashboard modern. Gunakan navigasi di kiri untuk pindah halaman.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- pastikan data.js di-load dulu -->
+  <script src="js/data.js"></script>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    try {
+      // OPTIONAL: cek login (jika pakai localStorage session)
+      try {
+        const sess = localStorage.getItem('sitta_user');
+        // kalau mau non-aktifkan redirect, komentari blok berikut
+        if (!sess) {
+          // belum login -> redirect ke login.html
+          // window.location.href = 'login.html';
+          // memberi peringatan di console agar tidak mengganggu
+          console.info('Tidak ada sesi login terdeteksi di localStorage (key: sitta_user).');
+        }
+      } catch (e) {
+        console.warn('Cek session gagal:', e);
+      }
+
+      // greeting waktu
+      const greetEl = document.getElementById('greeting');
+      if (greetEl) {
+        const h = new Date().getHours();
+        let greeting = 'Halo';
+        if (h >= 4 && h < 12) greeting = 'Selamat pagi';
+        else if (h >= 12 && h < 15) greeting = 'Selamat siang';
+        else if (h >= 15 && h < 18) greeting = 'Selamat sore';
+        else greeting = 'Selamat malam';
+        greetEl.textContent = `${greeting}! Selamat Datang, di SITTA`;
+      }
+
+      // stok summary
+      const stokSummaryEl = document.getElementById('stokSummary');
+      if (!stokSummaryEl) {
+        console.warn('Elemen stokSummary tidak ditemukan di DOM.');
+      } else {
+      // pastikan variable dataBahanAjar ada
+      if (typeof dataBahanAjar !== 'undefined' && Array.isArray(dataBahanAjar)) {
+        const totalItems = dataBahanAjar.length;
+
+    // hitung jumlah stok yang hampir habis (<= 5)
+    const lowStock = dataBahanAjar.filter(it => {
+      // kalau stok bukan number, abaikan
+      if (typeof it.stok !== 'number') return false;
+      return it.stok <= 5;
+    }).length;
+
+    stokSummaryEl.textContent = `${totalItems} jenis bahan ajar — ${lowStock} stok mendekati habis.`;
+  } else {
+    stokSummaryEl.textContent = 'Data stok belum tersedia.';
+  }
+}
+      // PENGIRIMAN TERAKHIR (versi rapi)
+const pengirimanEl = document.getElementById('pengirimanTerakhir');
+if (typeof dataDO !== 'undefined') {
+  const sorted = dataDO.sort((a, b) => new Date(b.tanggal) - new Date(a.tanggal));
+  const terbaru = sorted.slice(0, 2);
+
+  pengirimanEl.innerHTML = terbaru.map(doItem => {
+    const s = doItem.status.toLowerCase();
+    const cls =
+      s === 'diterima' ? 'status-diterima' :
+      s === 'dikirim'  ? 'status-dikirim'  :
+      'status-dibuat';
+    return `
+      <div class="pengiriman-item">
+        <div class="pengiriman-header">
+          <span class="do-number">${doItem.no}</span>
+          <span class="status-label ${cls}">${doItem.status}</span>
+        </div>
+        <div class="pengiriman-footer">
+          <span class="tanggal">${doItem.tanggal}</span>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+
+      // logout button
+      const logoutBtn = document.getElementById('logoutBtn');
+      if (logoutBtn) {
+        logoutBtn.addEventListener('click', () => {
+          try {
+            localStorage.removeItem('sitta_user');
+          } catch (e) { console.warn('Gagal menghapus session:', e); }
+          window.location.href = 'login.html';
+        });
+      } else {
+        console.warn('logoutBtn tidak ditemukan.');
+      }
+
+    } catch (err) {
+      // tangkap error tak terduga supaya tidak memutus eksekusi
+      console.error('Error pada script dashboard:', err);
+      // tampilkan pesan ramah ke pengguna (opsional)
+      const mainEl = document.querySelector('.main');
+      if (mainEl) {
+        const errBox = document.createElement('div');
+        errBox.style.background = '#fff4f4';
+        errBox.style.border = '1px solid #ffc9c9';
+        errBox.style.padding = '12px';
+        errBox.style.marginTop = '12px';
+        errBox.textContent = 'Terjadi kesalahan pada dashboard (lihat console untuk detail).';
+        mainEl.prepend(errBox);
+      }
+    }
+  });
+  </script>
+  <script src="js/main.js"></script>
+  <script>
+</script>
+</body>
+</html>
+
