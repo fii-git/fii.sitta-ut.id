@@ -78,6 +78,78 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
+  // cari sidebar (prioritas id then class)
+  const sidebar = document.getElementById('sidebar') || document.querySelector('.sidebar');
+  // cari content (coba beberapa selector)
+  const content = document.querySelector('.content') 
+                || document.querySelector('.main') 
+                || document.getElementById('main-content')
+                || document.querySelector('.main-content');
+  // cari tombol jika sudah ada
+  let toggleBtn = document.getElementById('sidebarToggle') || document.querySelector('.toggle-btn');
+
+  // fallback: jika tidak ada sidebar, stop
+  if (!sidebar) {
+    console.warn('ToggleSidebar: sidebar element not found.');
+    return;
+  }
+
+  // jika toggle btn tidak ada, buat otomatis dan tambahkan ke body
+  if (!toggleBtn) {
+    toggleBtn = document.createElement('button');
+    toggleBtn.id = 'sidebarToggle';
+    toggleBtn.className = 'toggle-btn';
+    toggleBtn.innerHTML = '☰';
+    document.body.appendChild(toggleBtn);
+  }
+
+  // Helper: toggle behavior (handles both desktop hide and mobile show)
+  function doToggle() {
+    // For mobile we may prefer .show to slide in
+    const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+    if (vw <= 768) {
+      // mobile: toggle .show to slide sidebar in/out
+      sidebar.classList.toggle('show');
+      // keep content margin consistent on mobile (usually 0)
+      if (content) content.classList.toggle('full');
+      toggleBtn.classList.toggle('move-left');
+    } else {
+      // desktop: move sidebar out of view with .hidden
+      sidebar.classList.toggle('hidden');
+      if (content) content.classList.toggle('full');
+      toggleBtn.classList.toggle('move-left');
+    }
+  }
+
+  // attach click
+  toggleBtn.addEventListener('click', doToggle);
+
+  // close sidebar on clicking outside (mobile only)
+  document.addEventListener('click', (e) => {
+    const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+    if (vw <= 768 && sidebar.classList.contains('show')) {
+      // if click outside sidebar and not on toggle button
+      if (!sidebar.contains(e.target) && !toggleBtn.contains(e.target)) {
+        sidebar.classList.remove('show');
+        if (content) content.classList.remove('full');
+        toggleBtn.classList.remove('move-left');
+      }
+    }
+  });
+
+  // optional: close with ESC
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      sidebar.classList.remove('show');
+      sidebar.classList.remove('hidden');
+      if (content) content.classList.remove('full');
+      toggleBtn.classList.remove('move-left');
+    }
+  });
+
+});
+
+document.addEventListener('DOMContentLoaded', () => {
   const stokSummaryEl = document.getElementById('stokSummary');
 
   if (typeof dataBahanAjar === 'undefined' || !Array.isArray(dataBahanAjar)) {
