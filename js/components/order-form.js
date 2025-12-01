@@ -28,8 +28,10 @@ export default {
         !this.form.kategori ||
         !this.form.upbjj ||
         !this.form.lokasiRak ||
+        this.form.harga === null || this.form.harga === "" ||
         this.form.qty === null ||
         this.form.safety === null
+
       ) {
         alert("⚠ Harap lengkapi semua form sebelum menambahkan bahan ajar.");
         return;
