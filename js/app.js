@@ -27,6 +27,13 @@ createApp({
   },
 
   methods: {
+    addBahanAjar(itemBaru) {
+      this.bahanAjar.push(itemBaru);
+
+    // wajib supaya Vue3 reaktif 
+      this.bahanAjar = [...this.bahanAjar];
+    },   
+    
     // Buka modal edit
     openEditModal(item) {
       this.selectedItem = item;
