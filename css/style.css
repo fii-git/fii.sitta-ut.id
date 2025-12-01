@@ -988,3 +988,108 @@ td, th {
   padding: 8px 18px;
   border-radius: 6px;
 }
+
+/* ===========================
+   TOGGLE SIDEBAR — MODERN
+=========================== */
+.toggle-btn {
+  position: fixed !important;
+  top: 18px;
+  left: 255px;
+  width: 42px;
+  height: 34px;
+  padding: 6px;
+  border-radius: 8px;
+  border: none;
+  background: #004a9f;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  z-index: 2000;
+  transition: left 0.3s ease;
+}
+
+.toggle-btn span {
+  display: block;
+  height: 4px;
+  width: 100%;
+  background: white;
+  border-radius: 4px;
+  transition: 0.3s ease;
+}
+
+/* Animasi Hamburger → X */
+.toggle-btn.active span:nth-child(1) {
+  transform: translateY(10px) rotate(45deg);
+}
+.toggle-btn.active span:nth-child(2) {
+  opacity: 0;
+}
+.toggle-btn.active span:nth-child(3) {
+  transform: translateY(-10px) rotate(-45deg);
+}
+
+/* Posisi saat sidebar tertutup */
+.toggle-btn.collapsed {
+  left: 18px !important;
+}
+
+/* Sidebar sliding */
+.sidebar {
+  transition: transform 0.3s ease;
+}
+.sidebar.collapsed {
+  transform: translateX(-240px);
+}
+
+/* Content shift */
+.content {
+  transition: margin-left 0.3s ease;
+}
+.sidebar.collapsed + .content {
+  margin-left: 20px !important;
+}
+
+/* =============================
+   FIX: Behavior Content & Sidebar
+   ============================= */
+
+/* Default sidebar width */
+.sidebar {
+  width: 260px;
+  transition: transform .3s ease, width .3s ease;
+}
+
+/* Semua jenis content pada website */
+.content,
+.main,
+.main-content {
+  margin-left: 260px;    /* mengikuti sidebar */
+  transition: margin-left .3s ease;
+  width: calc(100% - 260px);
+}
+
+/* Saat sidebar ditutup */
+.sidebar.hidden {
+  transform: translateX(-260px);
+}
+
+/* Content harus melebar penuh */
+.sidebar.hidden ~ .content,
+.sidebar.hidden ~ .main,
+.sidebar.hidden ~ .main-content {
+  margin-left: 0 !important;
+  width: 100% !important;
+}
+
+/* Mobile: sidebar overlay, content full by default */
+@media (max-width: 768px) {
+  .content,
+  .main,
+  .main-content {
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+}
